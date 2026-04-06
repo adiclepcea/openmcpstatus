@@ -1,4 +1,8 @@
 managedControlPlane:
+  defaultOIDCProvider:
+    clientID: openmcp
+    issuer: https://portal.cc-d2.showroom.apeirora.eu/keycloak/realms/operator
+    name: openmcp
   mcpClusterPurpose: mcp-worker
   reconcileMCPEveryXDays: 7
 scheduler:
