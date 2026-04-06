@@ -12,7 +12,7 @@ spec:
     spec:
       cloudProfile:
         kind: CloudProfile
-        name: gcp
+        name: converged-cloud-ora-fp
       kubernetes:
         version: "1.33.9" # e.g. "1.32"
       maintenance:
@@ -22,6 +22,6 @@ spec:
           begin: 220000+0200
           end: 230000+0200
       provider:
-        type: gcp
+        type: openstack
       purpose: evaluation
       region: eu-de-1 # eg europe-west1

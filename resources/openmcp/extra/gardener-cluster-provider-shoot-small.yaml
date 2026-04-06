@@ -12,7 +12,7 @@ spec:
     spec:
       cloudProfile:
         kind: CloudProfile
-        name: gcp
+        name: converged-cloud-ora-fp
       kubernetes:
         version: "1.33.9" # e.g. "1.32"
       maintenance:
@@ -22,19 +22,21 @@ spec:
           begin: 220000+0200
           end: 230000+0200
       networking:
-        nodes: 10.180.0.0/16
+        nodes: 10.250.0.0/16
         type: calico
       provider:
         controlPlaneConfig:
-          apiVersion: gcp.provider.extensions.gardener.cloud/v1alpha1
+          apiVersion: openstack.provider.extensions.gardener.cloud/v1alpha1
           kind: ControlPlaneConfig
           zone: eu-de-1b # e.g. europe-west1-c
+          loadBalancerProvider: f5
         infrastructureConfig:
-          apiVersion: gcp.provider.extensions.gardener.cloud/v1alpha1
+          apiVersion: openstack.provider.extensions.gardener.cloud/v1alpha1
           kind: InfrastructureConfig
           networks:
-            workers: 10.180.0.0/16
-        type: gcp
+            workers: 10.250.1.0/24
+          floatingPoolName: FloatingIP-external-ora-01
+        type: openstack
         workers:
         - cri:
             name: containerd
@@ -43,14 +45,14 @@ spec:
             image:
               name: gardenlinux
               version: "1877.13.0" # e.g. "1592.9.0"
-            type: n1-standard-2
+            type: g_c2_m4
           maxSurge: 1
           maximum: 5
           minimum: 1
           name: default-worker
           volume:
             size: 50Gi
-            type: pd-balanced
+            #type: default
           zones:
           - eu-de-1b # e.g. europe-west1-c
       purpose: evaluation
