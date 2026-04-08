@@ -9,7 +9,6 @@ spec:
         url: apeiro-showroom.common.repositories.cloud.sap/helm/crossplane:2.0.2
         secretRef:
           name: crossplane-provider-kubernetes
-          namespace: default
       image:
         url: xpkg.crossplane.io/crossplane/crossplane:v2.0.2
     - version: v1.20.1
@@ -17,7 +16,6 @@ spec:
         url: apeiro-showroom.common.repositories.cloud.sap/helm/crossplane:1.20.1
         secretRef:
           name: crossplane-provider-kubernetes
-          namespace: default
       image:
         url: xpkg.crossplane.io/crossplane/crossplane:v1.20.1
   providers:
